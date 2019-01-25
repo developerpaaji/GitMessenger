@@ -1,0 +1,23 @@
+<!doctype html>
+<script src="../b64toBlob.js"></script>
+<script>
+  'use strict';
+
+  const assert = (condition, errorMessage = "assertion failed") => {
+    if (!condition) throw new Error(errorMessage);
+  }
+
+  const assertThrows = (f, errorMessage = "expected exception but returned cleanly") => {
+    let thrown = false;
+    try { f() } catch (ex) { thrown = true; }
+    if (!thrown) throw new Error(errorMessage);
+  }
+
+  assertThrows(() => b64toBlob());
+
+  assert(b64toBlob("").size == 0);
+  
+  assert(b64toBlob("aGVsbG8=", "text/plain").size == 5);
+
+  console.log("Done");
+</script>

@@ -1,0 +1,86 @@
+<html>
+    <head>
+         <title>Chats</title>
+         <meta name="theme-color" content="#1e2327">
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+         <meta name="title" content="Chats">
+         <meta property="og:site_name" content="GitMessenger">
+         <meta property="og:url" content="http://gitmessenger.herokuapp.com/chats">         
+         <meta property="og:image" content="http://gitmessenger.herokuapp.com/logo.png">
+         <meta name="description" content="Instantly connect with Github developers">
+         <link rel="canonical" href="http://gitmessenger.herokuapp.com/"/>
+         <link rel="alternate" href="http://gitmessenger.herokuapp.com/"hreflang="en" />
+         <meta name="keywords" content="nodejs,javascript,firebase,socket.io,passport.js,web development,github">
+        <link href="/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+
+        <link rel="stylesheet"  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>    
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"/>
+         
+        <script src="/prism.js"></script>
+        <link rel="stylesheet" href="/prism.css" data-noprefix />
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/chat.js"></script>
+        <script src="/users.js"></script>
+        <script src="/messages.js"></script>
+        <script src="/userbody.js"></script>        
+        <link rel="stylesheet" href="/style.css"/>        
+   
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <!---->
+    <body class="container-fluid p-0" style="overflow: hidden;">
+       <script>
+           try{
+            var key=`{{key}}`;
+            var userJson={{{user.stringify}}};          
+           }
+           catch(e)
+           {
+             window.location.href='/';
+           }
+       </script>
+      <div aria-live="polite" id="toastBody" aria-atomic="true" style="position: fixed;bottom:50pt;right:50pt;z-index: 200;">
+        
+      </div>
+      
+       <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="logoutModalTitle">Do you really want to logout?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button type="button"  class="btn btn-outline-secondary" data-dismiss="modal">No</button>
+              <a href="/logout" type="button" id="logout" class="btn btn-danger">Yes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+         <div class="alert alert-warning "  id="msg-alert" style="z-index:100" role="alert">
+            <strong>Sorry</strong> <span id="alert-msg">You should check in on some of those fields below.</span>
+            <button type="button" class="close" id="alert-close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class=" row h-100 p-0" id="main-body">
+                        
+        </div>
+   
+        <div class="dropdown-menu " id="message-menu" >
+          <a class="dropdown-item" id="message-copy">Copy</a>
+          <a class="dropdown-item" id="message-delete">Delete</a>
+      </div>
+    </body>
+</html>

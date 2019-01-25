@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>GitMessenger</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link href="/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+        <script src="app.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+         <meta name="title" content="GitMessenger">
+         <meta property="og:site_name" content="GitMessenger">
+         <meta property="og:url" content="http://gitmessenger.herokuapp.com/chats">         
+         <meta property="og:image" content="http://gitmessenger.herokuapp.com/logo.png">
+         <meta name="description" content="GitMessenger is chat app for developers where you can text,share images,code😊 and much more!. Fork this app at https://github.com/singhbhavneet/GitMessenger/.It is built with nodejs, socket.io ,firebase and bootstrap">
+         <link rel="canonical" href="http://gitmessenger.herokuapp.com/"/>
+         <link rel="alternate" href="http://gitmessenger.herokuapp.com/"hreflang="en" />
+         <meta name="keywords" content="nodejs,javascript,firebase,socket.io,passport.js,web development,github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body class="container-fluid" >
+        <script>
+            console.log(localStorage["currentUser"])
+            if(localStorage["currentUser"]!="null")
+            {
+             console.log(4) 
+             window.location.replace("/chats")
+            } 
+        </script>
+        <div class="row h-100">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm-8 " style="justify-content:center;display: flex;" >
+                <div class="card my-auto"  style="border:none;outline:none;">
+                    <div class="card-body text-center">
+                        <img src="images/logo.png" class="card-image-top" width="150pt" height="150pt">
+                        <h1 class="card-title mt-4" style="font-weight: 400">GitMessenger</h1>
+                        <p class="card-subtitle mt-2 "style="font-weight: 200">Instantly connect with Github developers </p>
+                        <p class="card-text mt-0 " style="font-weight: 200">Sign in with Github to get started.</p>
+                    </div>
+                       <div class="card-footer text-center" style="background: white;border:none">
+                            <a href="/auth/github" class="btn btn-primary mt-4 font-weight-bold py-x py-2">Get Started</a>                            
+                       </div>
+                </div>
+            </div>
+            <div class="col-sm">
+
+            </div>
+        </div>
+        <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" >
+                <div class="modal-dialog modal-dialog-centered modal-lg text-center" role="document">
+                  <div class="modal-content text-center">
+                    <div class="modal-header d-flex" style="justify-content: center">
+                      <h2 class="modal-title " id="welcomeLogo" >Checking...</h2>
+                    </div>
+                    <div class="modal-body">
+                      <div class="card text-center" id="profileCard" style="border:none;outline:none">
+                          <div class="card-body"  >
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer d-flex" style="justify-content: center">
+                      <p class="text-muted ">Made With ❤ and Javascript</p>
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </body>
+</html>
