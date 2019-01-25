@@ -1,8 +1,9 @@
-![giphy.gif](https://www.dropbox.com/s/bpcxleht4ejjd28/giphy.gif?dl=0&raw=1)# GitMessenger
+# GitMessenger
 
 A chat app built with Nodejs,Socket.io, Firebase, Prism and Bootstrap
-Mobile Screenshot
 
+Mobile Screenshot
+![giphy.gif](https://www.dropbox.com/s/bpcxleht4ejjd28/giphy.gif?dl=0&raw=1)
 Desktop Screenshots
 
 ![Desktop](https://lh3.googleusercontent.com/tkRYOBuqb84_Sn-eOfXrOJfeL6XkM8QWSvbIL0QnUspgSWWb2uNfyL3DVvDegvArK4wKhy4YJ8pwQocyEjDVHBnsTsmxXiYVfOVeuFUbObVycH8RxCcm05FtR5aQhOjiUek10GL-8Nyan9064spp6ObxegvtxwcMYtz2SdsHMKeyzVcUcbMNv3q1V7_l0JkVBi6UO7YapwIRPl0lubS5zRWhuXQzh94oWHhcEvTc1tIhjrWJNkjD3gkIyCRUf0K3RpA8Hu7oV1QzyLIrYX1TH0PodwCw_8w_NnlPX7L3eM1Cm4HW2ceIVIETdvE4LjlDJTCLeBCnF2lH5v0mAQaOYLlGJhVPbxj7hmKFFcY7VtQ3epCkYvvP3VuHb_hXkRNHvIkp8eHobAIzSTw4gQN0XzQS5SMlYQTeDB-u1Sfldr0OPlr8a9fFB6Z5U4hEhRkqVzY1yYzaWQQ1jcXiPrSI-f7T4u2YsyhraELIkH-9xuvGd0z_Ul07Jq2RTYqF4FevNjLlUBSWNRIoep7UJhqOOLKftoR3ahtQGZj8oROWSaBJBzCafOjlbwi3rCHFzHs38etXUb5v9j1Wl5cP_kWw962wIFAu97H3zuXWReC06q7QUp5PolcXCVzREGniqCEegTME445TjS9L4fJJ1NOmaMQ=w1920-h754-no)
