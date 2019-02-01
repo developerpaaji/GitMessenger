@@ -1,6 +1,7 @@
 # GitMessenger
-Link-https://gitmessenger.herokuapp.com
-A chat app built with Nodejs,Socket.io, Firebase, Prism and Bootstrap
+Link - https://gitmessenger.herokuapp.com
+
+A chat app built with Nodejs, Socket.io, Firebase, Prism and Bootstrap
 
 Mobile Screenshot
 
@@ -12,7 +13,7 @@ Desktop Screenshots
 
 ## Description
 
-GitMessenger is chat app for developers where you can text,share images,code😊 and much more!. Fork this app at https://github.com/singhbhavneet/GitMessenger/.It is built with nodejs, socket.io ,firebase and bootstrap
+GitMessenger is chat app for developers where you can text, share images, code and much more! It is built with nodejs, socket.io, firebase and bootstrap.
 
 ### Attention
 
@@ -25,13 +26,13 @@ google-services.json
 ### Built With
 
 Following is list of  libraries used in app.
-1) [Socket.io](https://socket.io/)-For creating socket connections
-2) [Node.js](https://nodejs.org/en/)-For backend development
-5) [Bootstrap](https://getbootstrap.com/)-Frontend development
-3) [Firebase](https://firebase.google.com)-For Storing chats,
-4) [Prism](https://prismjs.com/)-Sharing codes.
-5) [Passport](https://www.npmjs.com/package/passport)-Github Authentication.
-6) [Express-Session](https://www.npmjs.com/package/express-session)-Creating sessions. 
+* [Socket.io](https://socket.io/) - For creating socket connections
+* [Node.js](https://nodejs.org/en/) - For backend development
+* [Bootstrap](https://getbootstrap.com/) - Frontend development
+* [Firebase](https://firebase.google.com) - For Storing chats,
+* [Prism](https://prismjs.com/) - Sharing codes.
+* [Passport](https://www.npmjs.com/package/passport) - Github Authentication.
+* [Express-Session](https://www.npmjs.com/package/express-session) - Creating sessions. 
 
 
 ## Authors
@@ -44,4 +45,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Its because of my mummy's motivation,god's blessing and family'support that I am able to complete this project.Also thank you Arnav Sir [championswimmer](https://github.com/championswimmer) for being a good mentor 
+Its because of my mummy's motivation, God's blessing and family's support that I am able to complete this project. Also thank you Arnav Sir [championswimmer](https://github.com/championswimmer) for being a good mentor.
