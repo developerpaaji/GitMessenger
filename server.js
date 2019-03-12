@@ -1,108 +1,113 @@
-const express=require('express');
-const app=express();
-const request=require('request');
-const http=require('http').Server(app);
-const sock=require('socket.io');
-const io=sock(http);
-const cheerio=require('cheerio');
-const firebase=require('./firebase/firebase.js');
-const async=require('async');
-const fs=require('fs');
-const crypto=require('crypto-js');
-const redis=require("redis");
-
-require('dotenv').config()
-
-const PORT=process.env.PORT || 5050;
-const hostname="localhost"
-const passport = require('passport');
-const GitHubStrategy = require('passport-github').Strategy;
+const express = require('express');
+const request = require('request');
+const sock = require('socket.io');
+const io = sock(http);
+const cheerio = require('cheerio');
+const async = require('async');
+const fs = require('fs');
 const session = require('express-session');
+const passport = require('passport');
+const crypto = require('crypto-js');
+const redis = require('redis');
+
+const http = require('http').Server(app);
 var redisStore = require('connect-redis')(session);
+
+const app = express();
+require('dotenv').config()
+const firebase = require('./firebase/firebase.js');
+
+const PORT = process.env.PORT || 5050;
+const hostname = 'localhost';
+const GitHubStrategy = require('passport-github').Strategy;
 
 app.use(session({
     secret: 's3cr3t',
     saveUninitialized: true,
-    resave: true
+    resave: true,
   }));
 
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser((user, done) => {
     done(null, user);
   });
   
-  passport.deserializeUser(function(user, done) {
+  passport.deserializeUser((user, done) => {
     done(null, user);
   });
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_SECRET_ID,
     callbackURL: "https://gitmessenger.herokuapp.com/auth/github/callback",
-    passReqToCallback : true
+    passReqToCallback : true,
   },
-  function(req,accessToken, refreshToken, profile, done) {
-    var user=new User(profile.displayName,profile.username,profile["_json"].avatar_url,profile["_json"].html_url,profile["_json"].bio)
-    firebase.registerUser(user).then((data)=>{      
-    });
+  function(req, accessToken, refreshToken, profile, done) {
+    var user = new User(
+	    profile.displayName,
+	    profile.username,
+	    profile['_json'].avatar_url,
+	    profile["_json"].html_url,
+	    profile["_json"].bio
+    );
+    firebase.registerUser(user).catch(err => console.error); // If you don't need .then() you can just add an .catch
     return done(null,user) 
   }
 ));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.json({limit: '2mb'}));
-app.use(express.urlencoded({limit: '2mb',extended:true}));
-//
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ limit: '2mb', extended:true }));
+app.use('/', express.static('public'));
+app.set('view engine','hbs');
+
 firebase.initializeApp();
-//
+
 const headers = { 
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
 };
-const base="https://github.com/";
-
+const base = 'https://github.com/';
 
 class User
 {
-   constructor(name,username,profilePic,profileUrl,description="",lastSeen=1548195506978)
+   constructor(name, username, profilePic, profileUrl, description='', lastSeen = 1548195506978)
    {
-         this.name=name;
-         this.username=username;
-         this.profilePic=profilePic;
-         this.profileUrl=profileUrl;
-         this.description=description;
-         this.lastSeen=lastSeen;
+         this.name = name;
+         this.username = username;
+         this.profilePic = profilePic;
+         this.profileUrl = profileUrl;
+         this.description = description;
+         this.lastSeen = lastSeen;
    }
 }
 class Message
 {    
-    constructor(to,type,content,from)
+    constructor(to, type, content, from)
     {
-          this.to=to;
-          this.type=type;
-          this.content=content;
-          this.from=from;
+          this.to = to;
+          this.type = type;
+          this.content = content;
+          this.from = from;
     }    
 }
-app.use('/',express.static('public'));
 
-app.set('view engine','hbs');
-const REGISTER="register",USERDATA="userdata",NULL="null";
-var activeUsers={};
-var userDetails={}
-var socketId={};
-var socket=null;
-io.on("connection",(socket)=>{
+const REGISTER = 'register', USERDATA = 'userdata', NULL = 'null'; // You really don't need a variable declared as NULL. Use primitive null type.
+var activeUsers = {};
+var userDetails = {}
+var socketId = {};
+var socket = null;
+io.on('connection', socket => {
   
-    var id=socket.id;
-    socket.on("initial",(data)=>{
+    const id = socket.id; // id isn't been changed, use const instead.
+    socket.on('initial', data => {
         if(!data)
         {
             return;
         }  
-        userDetails[data["username"]]=data;
-        activeUsers[data['username']]=id;
-        socketId[id]=data['username'];
-        socket.to(id).emit("key",JSON.stringify({key:crypto.SHA256(data["username"])}));
-        socket.broadcast.emit("connected",JSON.stringify({username:data["username"]}));
+        userDetails[data['username']] = data;
+        activeUsers[data['username']] = id;
+        socketId[id] = data['username'];
+        socket.to(id).emit('key', JSON.stringify({ key: crypto.SHA256(data["username"]) }));
+        socket.broadcast.emit('connected', JSON.stringify({ username: data["username"] }));
     }); 
     
     socket.on("chats",(data)=>{
