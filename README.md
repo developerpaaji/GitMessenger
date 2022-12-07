@@ -42,7 +42,3 @@ Following is list of  libraries used in app.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-Its because of my mummy's motivation, God's blessing and family's support that I am able to complete this project. Also thank you Arnav Sir [championswimmer](https://github.com/championswimmer) for being a good mentor.
